@@ -17,7 +17,7 @@ private:
 public:
 	DoubleLinkedlist();
 	void addnode();
-	bool search(int ro11no, Node** previous, Node** current);
+	bool search(int rollno, Node** previous, Node** current);
 	bool deletenode(int ro11on);
 	bool listEmpty();
 	void traverse();
@@ -33,7 +33,7 @@ DoubleLinkedlist::DoubleLinkedlist() {
 void DoubleLinkedlist::addnode() {
 	int nim;
 	string nm;
-	cout << "\nEnter the ro11 number of the student:";
+	cout << "\nEnter the roll number of the student:";
 	cin >> nim;
 	cout << "\nEnter the name of the student:";
 	cin >> nm;
@@ -43,13 +43,32 @@ void DoubleLinkedlist::addnode() {
 
 	//"insert a node in the beginner of a doubly - linked list"/
 	if (START == NULL || nim <= START->noMhs) {
-		cout << "\nDuplicate number not allowed" << endl;
+		if (START != NULL && nim == START->noMhs) {
+			cout << "\nDuplicate number not allowed" << endl;
+			return;
+		}
+		newNode->next = START; //step 3
+		if (START != NULL)
+			START->prev = newNode; //stepp 4
+		newNode->prev = NULL; //step 5
+		START = newNode; // step 6
 		return;
+		
 	}
-	newNode->next = START; //step 3
-	if (START != NULL)
-		START->prev = newNode; //stepp 4
-	newNode->prev = NULL; //step 5
-	START = newNode; // step 6
-	return;
+	//*inserting a node between two Nodes in the list*
+	Node* current = START; //step 1.a
+	Node* previous = NULL; //step 1.b
+	while (current->next != NULL && current->next->noMhs < nim) //step 1.c
+	{
+		previous = current; // 1.d
+		current = current->next; //1.e
+	}
+	if (current->next != NULL && nim == current->next->noMhs) {
+		cout << "\nDuplicate roll number not allowed" << endl;
+		return;
+
+	}
+	newNode->next = current->next; //step 4
+	newNode->prev = current; //step 5
+			
 }
