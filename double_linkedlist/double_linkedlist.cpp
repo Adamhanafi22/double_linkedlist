@@ -32,5 +32,6 @@ DoubleLinkedlist::DoubleLinkedlist() {
 
 void DoubleLinkedlist::addnode() {
 	int nim;
-	string nm
+	string nm;
+
 }
