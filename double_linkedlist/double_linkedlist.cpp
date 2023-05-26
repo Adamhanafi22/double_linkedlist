@@ -10,3 +10,27 @@ public:
 	Node* prev;
 
 };
+
+class DoubleLinkedlist {
+private:
+	Node* START;
+public:
+	DoubleLinkedlist();
+	void addnode();
+	bool search(int ro11no, Node** previous, Node** current);
+	bool deletenode(int ro11on);
+	bool listEmpty();
+	void traverse();
+	void revtraverse();
+	void hapus();
+	void searchdata();
+};
+
+DoubleLinkedlist::DoubleLinkedlist() {
+	START = NULL;
+}
+
+void DoubleLinkedlist::addnode() {
+	int nim;
+	string nm
+}
